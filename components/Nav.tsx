@@ -15,7 +15,7 @@ import profile from "../assests/profile.jpg";
 type Props = {};
 function Nav({}: Props) {
   return (
-    <div className="h-[100vh] w-[60px] md:w-1/6 lg:w-1/4 border p-2 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
+    <div className="h-[100vh] w-[60px] md:w-1/6 lg:w-1/4  border-r  border-b-[#d3d3d3]  p-2 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
       <div className="space-y-8 flex flex-col items-center lg:items-start">
         <Image
           src={Twitterlogo}
@@ -26,7 +26,7 @@ function Nav({}: Props) {
         />
         <div className="flex items-center space-x-4">
           <HomeIcon className="w-8" />
-          <h2 className="hidden lg:flex text-lg  font-semibold ">Home</h2>
+          <h2 className="hidden lg:flex text-lg  font-semibold  ">Home</h2>
         </div>
         <div className="flex items-center space-x-4">
           <MagnifyingGlassIcon className="w-8" />
@@ -72,9 +72,9 @@ function Nav({}: Props) {
           height={200}
           className="rounded-full md:w-[60px]"
         />
-        <div>
+        <div className="hidden lg:flex lg:flex-col">
 
-        <h2 className=" font-bold ">mingmatenzing sherpa</h2>
+        <h2 className=" font-bold  ">mingmatenzing sherpa</h2>
         <h3 className=" font-light text-gray-400 text-sm">@mingmatenzing</h3>
         </div>
       </div>
