@@ -15,7 +15,7 @@ import profile from "../assests/profile.jpg";
 type Props = {};
 function Nav({}: Props) {
   return (
-    <div className="h-[100vh] w-[60px] md:w-1/6 lg:w-1/4  border-r  border-b-[#d3d3d3]  p-2 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
+    <div className=" h-[100vh]  w-[60px] md:w-1/6 lg:w-1/4  border-r  border-b-[#d3d3d3]  p-2 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
       <div className="space-y-8 flex flex-col items-center lg:items-start">
         <Image
           src={Twitterlogo}
