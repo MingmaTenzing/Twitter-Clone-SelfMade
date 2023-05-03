@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Nav from '../../components/Nav'
 import Feed from '../../components/Feed'
+import { Timeline } from 'react-twitter-widgets'
 
 
 
@@ -17,6 +18,10 @@ export default function Home() {
       <main className='flex'>
       <Nav/>
       <Feed/>
+      <div className='hidden lg:flex p-4  fixed  right-20'>
+        <Timeline  dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
+        options={{ width: "400", height: "800" }} />
+      </div>
    
      
       
