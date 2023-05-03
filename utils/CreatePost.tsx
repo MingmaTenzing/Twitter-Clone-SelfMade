@@ -5,12 +5,12 @@ import { FaceSmileIcon, GifIcon, GlobeAltIcon, GlobeAsiaAustraliaIcon, MapIcon, 
 type Props = {}
 function CreatePost({}: Props) {
   return (
-    <div className="flex space-x-6 p-2">
+    <div className="flex space-x-6 p-2 md:p-4">
         <div>
             <Image src={profile} alt="profile picture" width={200} height={200}  className="w-[50px] rounded-full"/>
         </div>
         <form>
-            <textarea className=" w-[250px] outline-none p-2  h-[100px]  " placeholder="What's happening?"></textarea>
+            <textarea maxLength={280} className=" md:text-lg  w-[250px] md:w-[480px] outline-none p-2  h-[100px]  " placeholder="What's happening?"></textarea>
            <div className="flex space-x-1  border-b">
             
            <GlobeAsiaAustraliaIcon className="w-4 text-twitter" />
