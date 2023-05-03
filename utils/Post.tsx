@@ -51,23 +51,23 @@ function Post({}: Props) {
 
         {/**LIKES AND COMMENTS */}
         <div className="flex space-x-4 md:space-x-10 items-center  mt-3">
-            <div className=" text-gray-500  space-x-1  items-center flex ">
+            <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex ">
             <ChatBubbleOvalLeftIcon  className="w-4 md:w-6" />
             <span className="text-sm md:text-base">1,344</span>
             </div>
-            <div className=" text-gray-500  space-x-1  items-center flex">
+            <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
             <ArrowPathRoundedSquareIcon  className="w-4 md:w-6" />
             <span className="text-sm md:text-base">2k</span>
             </div>
-            <div className=" text-gray-500  space-x-1  items-center flex">
+            <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
             <HeartIcon  className="w-4 md:w-6" />
             <span className="text-sm md:text-base">2M</span>
             </div>
-            <div className=" text-gray-500  space-x-1  items-center flex">
+            <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
             <ChartBarIcon  className="w-4 md:w-6" />
             <span className="text-sm md:text-base">30K</span>
             </div>
-            <div className=" text-gray-500  space-x-1  items-center flex">
+            <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
             <ArrowUpTrayIcon  className="w-4 md:w-6" />
             
             </div>

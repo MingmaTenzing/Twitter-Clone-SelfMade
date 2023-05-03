@@ -5,7 +5,7 @@ import { FaceSmileIcon, GifIcon, GlobeAltIcon, GlobeAsiaAustraliaIcon, MapIcon, 
 type Props = {}
 function CreatePost({}: Props) {
   return (
-    <div className="flex space-x-6 p-2 md:p-4">
+    <div className="flex space-x-6 p-2 md:p-4 border-t">
         <div>
             <Image src={profile} alt="profile picture" width={200} height={200}  className="w-[50px] rounded-full"/>
         </div>
