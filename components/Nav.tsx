@@ -4,6 +4,7 @@ import {
   BeakerIcon,
   BellIcon,
   BookmarkIcon,
+ 
   EllipsisHorizontalCircleIcon,
   EnvelopeIcon,
   HomeIcon,
@@ -11,6 +12,7 @@ import {
   PlusIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import profile from "../assests/profile.jpg";
 type Props = {};
 function Nav({}: Props) {
@@ -73,8 +75,13 @@ function Nav({}: Props) {
           className="rounded-full md:w-[60px]"
         />
         <div className="hidden lg:flex lg:flex-col">
-
+          <div className="flex">
         <h2 className=" font-bold  ">mingmatenzing sherpa</h2>
+        <CheckBadgeIcon className="w-6 text-twitter" />
+
+          </div>
+
+
         <h3 className=" font-light text-gray-400 text-sm">@mingmatenzing</h3>
         </div>
       </div>

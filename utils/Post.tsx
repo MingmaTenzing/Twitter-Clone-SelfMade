@@ -3,9 +3,15 @@ import profile from "../assests/profile.jpg";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { ArrowPathRoundedSquareIcon, ArrowUpTrayIcon, ChartBarIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalIcon, HeartIcon } from "@heroicons/react/24/outline";
 import Comments from "./Comments";
+import { tweet } from "../components/Feed";
 
-type Props = {};
-function Post({}: Props) {
+interface props{
+  tweet: tweet
+}
+
+function Post({tweet}: props) {
+  console.log(tweet.tweetText)
+  console.log(tweet.id)
   return (
     <div className="p-2  md:p-4 flex space-x-2 ">
       <div className="">
@@ -40,13 +46,11 @@ function Post({}: Props) {
 
 
         {/**Description and Image */}
-        <div>
+        <div className="space-y-3 mt-2">
           <h3>
-            Genuinely shocked at how many people have unironically asked for a
-            video on this ridiculous headphones/air filter thing. So $1000
-            later, here we are 🫡
+            {tweet.tweetText}
           </h3>
-          <img src="https://pbs.twimg.com/media/FvI3lfWWAAcjenF?format=jpg&name=large" className=" max-h-[510px] object-contain rounded-lg" />
+          <img src={tweet.image} className=" max-h-[510px] object-contain rounded-lg" />
         </div>
 
         {/**LIKES AND COMMENTS */}

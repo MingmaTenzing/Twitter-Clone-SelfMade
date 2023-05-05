@@ -1,7 +1,7 @@
 import Image from "next/image";
 import profile from "../assests/profile.jpg";
 import { db } from "@/firebase/init";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import {
   FaceSmileIcon,
   GifIcon,
@@ -11,7 +11,7 @@ import {
   MapPinIcon,
   PhotoIcon,
 } from "@heroicons/react/24/outline";
-import{ FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 
 
@@ -20,7 +20,10 @@ function CreatePost({}: Props) {
   const [openImageLinkInput, setopenImageLinkInput] = useState<boolean>(false);
   const [tweetText, settweetText] = useState<string>("");
   const [imageLink, setimageLink] = useState<string>("");
-  console.log(tweetText, imageLink);
+  
+
+ 
+
 
   async function postTWeet(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,18 +32,14 @@ function CreatePost({}: Props) {
       tweetText: tweetText,
 
       image: imageLink,
+      date: new Date().toString()
     };
-try{
-  await addDoc(collection(db, "posts"), tweet);
-  console.log('it works')
-
-} catch(e) {
-  console.error("Error adding tweet:", e)
-}
-   
-    
-
-
+    try {
+      await addDoc(collection(db, "posts"), tweet);
+      console.log("it works");
+    } catch (e) {
+      console.error("Error adding tweet:", e);
+    }
   }
 
   return (
