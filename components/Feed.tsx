@@ -6,7 +6,7 @@ import ShowPosts from "../utils/ShowPosts"
 type Props = {}
 function Feed({}: Props) {
   return (
-    <div className=" w-full md:w-[600px] border-r">
+    <div className=" w-full md:w-[600px] border-r ">
         <FeedHeader />
         <CreatePost/>
         <ShowPosts />
