@@ -2,10 +2,36 @@ import Head from 'next/head'
 import Nav from '../../components/Nav'
 import Feed from '../../components/Feed'
 import { Timeline } from 'react-twitter-widgets'
+import { useEffect, useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '@/firebase/init'
 
-
+export interface user {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  uid: string;
+}
 
 export default function Home() {
+  const [currentUser, setCurrentUser] = useState<user>();
+  
+  useEffect(() => {
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser({
+          displayName: user.displayName || "",
+          email: user.email || "",
+          photoURL: user.photoURL || "",
+          uid: user.uid || ""
+        });
+      }
+    })
+
+  }, [])
+
+  console.log(currentUser)
   return (
     <>
       <Head>
