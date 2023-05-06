@@ -1,12 +1,20 @@
 import Image from "next/image"
 import profile from "../assests/profile.jpg"
 import { CheckBadgeIcon } from "@heroicons/react/24/solid"
+import { tweet } from "../components/Feed"
+
+
+
 
 type Props = {}
-function Comments({}: Props) {
+function Comments() {
+
   return (
+  
+
+  
     
-    <div className=" pl-1 border-l flex space-x-2 m-2  md:w-[400px]">
+    <div className=" pl-1 border-l flex space-x-2 m-2 mt-8 md:w-[400px]">
             <div>
             <Image
           src={profile}
@@ -30,11 +38,10 @@ function Comments({}: Props) {
           </div>
         </div>
         <div>
+          
         <h3 className="text-sm">
-            Wow.. it's so amazing to see that tech marquess.. Keep it up Mingma
-            Wow.. it's so amazing to see that tech marquess.. Keep it up Mingma
-            Wow.. it's so amazing to see that tech marquess.. Keep it up Mingma
-            Wow.. it's so amazing to see that tech marquess.. Keep it up Mingma
+          comments
+        
           </h3>
         </div>
 
@@ -46,6 +53,7 @@ function Comments({}: Props) {
            
 
         </div>
+  
   )
 }
 export default Comments

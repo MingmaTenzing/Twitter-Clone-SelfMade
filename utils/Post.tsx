@@ -10,8 +10,7 @@ interface props{
 }
 
 function Post({tweet}: props) {
-  console.log(tweet.tweetText)
-  console.log(tweet.id)
+
   return (
     <div className="p-2  md:p-4 flex space-x-2 ">
       <div className="">
@@ -80,10 +79,7 @@ function Post({tweet}: props) {
 
         </div>
 
-        {/** COMMENTS SECTION */}
-        <Comments />
-        <Comments />
-        <Comments />
+      
 
         
       </div>

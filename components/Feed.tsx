@@ -5,17 +5,27 @@ import Post from "../utils/Post"
 import ShowPosts from "../utils/ShowPosts"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/init";
+import { useRouter } from "next/router";
 
 export interface tweet {
   tweetText: string;
   image: string;
   id: number;
+  comments: [];
+  
+}
+
+export interface Comment {
+commentText: string;
+date: string;
+postId: string;
 }
 
 
 type Props = {}
 function Feed({}: Props) {
   const [Tweets, setTweets] = useState<tweet[]>();
+  const router = useRouter()
 
   console.log(Tweets)
   useEffect(() => {
@@ -27,6 +37,7 @@ function Feed({}: Props) {
       setTweets(posts)
     }
 
+    
     getPosts()
   },[])
   return (
@@ -35,7 +46,11 @@ function Feed({}: Props) {
         <CreatePost/>
         <ShowPosts />
         {
-         Tweets && Tweets.map((tweet) => <Post tweet={tweet} key={tweet.id} />  )
+         Tweets && Tweets.map((tweet) =>
+         <div onClick={() => router.push(`/${tweet.id}`)} className=" hover:bg-gray-100" key={tweet.id}> 
+           <Post tweet={tweet} key={tweet.id} />  
+
+          </div>)
         }
     </div>
   )

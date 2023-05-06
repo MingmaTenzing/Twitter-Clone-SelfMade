@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/CreatePost.jsx", "src/firebase/init.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/CreatePost.tsx", "src/firebase/init.ts"],
   "exclude": ["node_modules"]
 }

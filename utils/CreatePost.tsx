@@ -32,7 +32,8 @@ function CreatePost({}: Props) {
       tweetText: tweetText,
 
       image: imageLink,
-      date: new Date().toString()
+      date: new Date().toString(),
+    
     };
     try {
       await addDoc(collection(db, "posts"), tweet);
