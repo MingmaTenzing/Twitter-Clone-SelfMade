@@ -5,6 +5,7 @@ import { Timeline } from 'react-twitter-widgets'
 import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase/init'
+import { useRouter } from 'next/router'
 
 export interface user {
   displayName: string;
@@ -14,6 +15,7 @@ export interface user {
 }
 
 export default function Home() {
+  const router = useRouter();
   const [currentUser, setCurrentUser] = useState<user>();
   
   useEffect(() => {
@@ -26,6 +28,9 @@ export default function Home() {
           photoURL: user.photoURL || "",
           uid: user.uid || ""
         });
+      }
+      else {
+        router.push('/login')
       }
     })
 
@@ -42,7 +47,7 @@ export default function Home() {
       </Head>
 
       <main className='flex'>
-      <Nav/>
+      <Nav />
       <Feed/>
       <div className='hidden lg:flex p-4  fixed  right-20'>
         <Timeline  dataSource={{ sourceType: "profile", screenName: "elonmusk" }}

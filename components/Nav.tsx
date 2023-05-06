@@ -14,8 +14,36 @@ import {
 } from "@heroicons/react/24/outline";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import profile from "../assests/profile.jpg";
+import { useEffect, useState } from "react";
+import { user } from "@/pages";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase/init";
+import { useRouter } from "next/router";
 type Props = {};
 function Nav({}: Props) {
+  const router = useRouter();
+
+  const [currentUser, setCurrentUser] = useState<user>();
+
+  useEffect(() => {
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser({
+          displayName: user.displayName || "",
+          email: user.email || "",
+          photoURL: user.photoURL || "",
+          uid: user.uid || ""
+        });
+      }
+      else {
+        router.push('/login')
+      }
+    })
+
+  }, [])
+
+
   return (
     <div className=" h-[100vh] sticky top-0 left-0  w-[60px] md:w-1/6 lg:w-1/4  border-r  border-b-[#d3d3d3]  p-2 px-4 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
       <div className="space-y-4 flex flex-col items-center lg:items-start">
@@ -67,22 +95,28 @@ function Nav({}: Props) {
       </div>
 
       <div className="  lg:flex lg:items-center lg:space-x-3 ">
-        <Image
-          src={profile}
-          alt="Profile Picture"
-          width={200}
-          height={200}
-          className="rounded-full md:w-[60px]"
-        />
+        {
+          currentUser?.photoURL? ( <img
+            src={currentUser?.photoURL!}
+            alt="Profile Picture"
+            width={200}
+            height={200}
+            className="rounded-full md:w-[60px]"
+          />) : (<div className=" px-3 py-2 bg-twitter text-white rounded-full" > {currentUser?.displayName[0]} </div>)
+        }
+       
         <div className="hidden lg:flex lg:flex-col">
           <div className="flex">
-        <h2 className=" font-bold  ">mingmatenzing sherpa</h2>
+            <div className="w-[160px]   ">
+              
+        <h2 className=" font-bold  truncate ... ">{currentUser?.displayName}</h2>
+            </div>
         <CheckBadgeIcon className="w-6 text-twitter" />
 
           </div>
 
 
-        <h3 className=" font-light text-gray-400 text-sm">@mingmatenzing</h3>
+        <h3 className=" font-light text-gray-400 text-sm">@{currentUser?.email}</h3>
         </div>
       </div>
     </div>
