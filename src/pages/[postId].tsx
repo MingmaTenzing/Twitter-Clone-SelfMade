@@ -111,7 +111,7 @@ console.log(user)
       <div className="md:border-r">
         {Tweet && <Post tweet={Tweet} />}
 
-        <div className="flex p-2 md:p-4 md:space-x-4 space-x-1 border-y">
+        <div className="flex items-center p-2 md:p-4 md:space-x-10 space-x-4 border-y">
           <img
             src={user.photoURL}
             alt="profile"
@@ -119,11 +119,11 @@ console.log(user)
             height={200}
             className="w-[40px] h-[40px]  object-cover object-center rounded-full"
           />
-          <form onSubmit={sendReply}>
+          <form onSubmit={sendReply} className="md:space-x-4">
             <input
               type="text"
               onChange={(e) => setReply(e.target.value)}
-              className=" text-sm md:text-base outline-none w-2/3"
+              className=" text-sm md:text-base outline-none  w-2/3 md:w-[360px] md:p-4 "
               placeholder="Enter your reply"
             ></input>
             <button
