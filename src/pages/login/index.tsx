@@ -10,7 +10,7 @@ import { log } from "console";
 import { user } from "../createprofile";
 
 type Props = {};
-function index({}: Props) {
+function SigninUser({}: Props) {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [Email, setEmail] = useState<string>();
@@ -74,4 +74,4 @@ function index({}: Props) {
     </div>
   );
 }
-export default index;
+export default SigninUser;
