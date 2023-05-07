@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import Nav from '../../components/Nav'
-import Feed from '../../components/Feed'
-import { Timeline } from 'react-twitter-widgets'
-import { useEffect, useState } from 'react'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/firebase/init'
-import { useRouter } from 'next/router'
-import { useAppDispatch } from '../../utils/hooks'
-import { login, signOut } from '../../slices/userSlice'
+import Head from "next/head";
+import Nav from "../../components/Nav";
+import Feed from "../../components/Feed";
+import { Timeline } from "react-twitter-widgets";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase/init";
+import { useRouter } from "next/router";
+import { useAppDispatch } from "../../utils/hooks";
+import { login, signOut } from "../../slices/userSlice";
 
 export interface user {
   displayName: string;
@@ -20,31 +20,28 @@ export default function Home() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [currentUser, setCurrentUser] = useState<user>();
-  
-  useEffect(() => {
 
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser({
           displayName: user.displayName || "",
           email: user.email || "",
           photoURL: user.photoURL || "",
-          uid: user.uid || ""
+          uid: user.uid || "",
         });
-        
+      } else {
+        router.push("/login");
       }
-      else {
-        router.push('/login')
-      }
-    })
+    });
+  }, []);
 
- 
+  if (currentUser) {
 
-  }, [])
-  dispatch(login(currentUser!));
+    dispatch(login(currentUser));
+  }
 
-  console.log(currentUser)
-
+  console.log(currentUser);
 
   return (
     <>
@@ -55,26 +52,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className='flex'>
-      <Nav />
-      <Feed/>
-      <div className='hidden lg:flex p-4  fixed  right-20'>
-        <Timeline  dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
-        options={{ width: "400", height: "800" }} />
-      </div>
-   
-     
-      
-
+      <main className="flex">
+        <Nav />
+        <Feed />
+        <div className="hidden lg:flex p-4  fixed  right-20">
+          <Timeline
+            dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
+            options={{ width: "400", height: "800" }}
+          />
+        </div>
       </main>
- 
-
-        
-     
-
-      
-
-     
-     </>
-  )
+    </>
+  );
 }

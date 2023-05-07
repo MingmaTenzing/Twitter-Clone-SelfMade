@@ -14,13 +14,20 @@ function Post({tweet}: props) {
   return (
     <div className="p-2  md:p-4 flex space-x-2 ">
       <div className="">
-        <Image
-          src={profile}
-          alt="profile picture"
-          width={200}
-          height={200}
-          className="w-[50px] rounded-full"
-        />
+        {
+          tweet.userPhotoURL ? ( <img
+            src={tweet.userPhotoURL}
+            alt="profile picture"
+            width={200}
+            height={200}
+            className="w-[50px] rounded-full"
+          />) : (
+            <div className=" px-3 py-2 bg-twitter text-white rounded-full">
+              {(tweet.userName[0]).toUpperCase()}
+              </div>
+          )
+        }
+       
       </div>
 
       <div className=" text-[15px] w-[280px] md:w-[500px]   ">
@@ -29,12 +36,12 @@ function Post({tweet}: props) {
 
         <div className=" flex items-center space-x-1">
           <div className="w-[100px]">
-            <h2 className=" truncate font-bold">Mingma Tenzing Sherpa </h2>
+            <h2 className=" truncate font-bold">{tweet.userName} </h2>
           </div>
           <CheckBadgeIcon className="w-6 text-twitter" />
           <div className="w-[80px]">
             <h3 className=" truncate text-gray-400 font-light">
-              @mingmtenzing
+              @{tweet.userName.toLocaleLowerCase()}
             </h3>
           </div>
           <span className="text-gray-400">.</span>

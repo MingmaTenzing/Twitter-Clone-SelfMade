@@ -8,11 +8,14 @@ import { db } from "@/firebase/init";
 import { useRouter } from "next/router";
 
 export interface tweet {
-  tweetText: string;
-  image: string;
-  id: number;
-  comments: [];
-  
+ date: string;
+ image: string;
+ tweetText: string;
+ uid: string;
+ userEmail: string;
+ userName: string;
+ userPhotoURL: string;
+ id: number; 
 }
 
 export interface Comment {

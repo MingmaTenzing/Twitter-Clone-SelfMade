@@ -12,27 +12,27 @@ import {
   PhotoIcon,
 } from "@heroicons/react/24/outline";
 import { FormEvent, useEffect, useState } from "react";
-
-
+import { useAppSelector } from "./hooks";
 
 type Props = {};
 function CreatePost({}: Props) {
   const [openImageLinkInput, setopenImageLinkInput] = useState<boolean>(false);
   const [tweetText, settweetText] = useState<string>("");
   const [imageLink, setimageLink] = useState<string>("");
-  
 
- 
-
+  const user = useAppSelector((state) => state.user.value);
 
   async function postTWeet(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const tweet = {
+      userName: user.displayName,
+      userEmail: user.email,
+      userPhotoURL: user.photoURL,
+      uid: user.uid,
       tweetText: tweetText,
       image: imageLink,
       date: new Date().toString(),
-    
     };
     try {
       await addDoc(collection(db, "posts"), tweet);
@@ -45,13 +45,19 @@ function CreatePost({}: Props) {
   return (
     <div className="flex space-x-6 p-2 md:p-4 border-t">
       <div>
-        <Image
-          src={profile}
-          alt="profile picture"
-          width={200}
-          height={200}
-          className="w-[50px] rounded-full"
-        />
+      {
+          user.photoURL ? ( <img
+            src={user.photoURL}
+            alt="profile picture"
+            width={200}
+            height={200}
+            className="w-[50px] rounded-full"
+          />) : (
+            <div className=" px-3 py-2 bg-twitter text-white rounded-full">
+              {(user?.displayName[0]?.toLocaleUpperCase())}
+              </div>
+          )
+        }
       </div>
       <form onSubmit={postTWeet}>
         <textarea
