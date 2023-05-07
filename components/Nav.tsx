@@ -101,7 +101,7 @@ function Nav({}: Props) {
             alt="Profile Picture"
             width={200}
             height={200}
-            className="rounded-full md:w-[60px]"
+            className="rounded-full w-[60px] h-6  md:w-[60px] md:h-[60px] object-cover"
           />) : (<div className=" px-3 py-2 bg-twitter text-white rounded-full" > {currentUser?.displayName[0]} </div>)
         }
        

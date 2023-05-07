@@ -51,7 +51,7 @@ function CreatePost({}: Props) {
             alt="profile picture"
             width={200}
             height={200}
-            className="w-[50px] rounded-full"
+            className="w-[50px] h-[50px]   object-cover  object-center rounded-full"
           />) : (
             <div className=" px-3 py-2 bg-twitter text-white rounded-full">
               {(user?.displayName[0]?.toLocaleUpperCase())}

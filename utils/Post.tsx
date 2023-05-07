@@ -20,7 +20,7 @@ function Post({tweet}: props) {
             alt="profile picture"
             width={200}
             height={200}
-            className="w-[50px] rounded-full"
+            className="w-[50px] h-[45px] md:h-[50px]  object-cover rounded-full"
           />) : (
             <div className=" px-3 py-2 bg-twitter text-white rounded-full">
               {(tweet.userName[0]).toUpperCase()}
