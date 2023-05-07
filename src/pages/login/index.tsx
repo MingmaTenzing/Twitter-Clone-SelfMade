@@ -1,13 +1,18 @@
 import Image from "next/image";
 import twitter from "../../../assests/twitter.png";
 import { FormEvent, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "@/firebase/init";
 import { useRouter } from "next/router";
+import { useAppDispatch } from "../../../utils/hooks";
+import { login } from "../../../slices/userSlice";
+import { log } from "console";
+import { user } from "../createprofile";
 
 type Props = {};
 function index({}: Props) {
-    const router = useRouter();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const [Email, setEmail] = useState<string>();
   const [Password, setPassword] = useState<string>();
 
@@ -16,7 +21,7 @@ function index({}: Props) {
 
     signInWithEmailAndPassword(auth, Email!, Password!)
       .then((userCredential) => {
-       router.push("/")
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);

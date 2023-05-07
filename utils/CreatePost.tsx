@@ -30,7 +30,6 @@ function CreatePost({}: Props) {
 
     const tweet = {
       tweetText: tweetText,
-
       image: imageLink,
       date: new Date().toString(),
     

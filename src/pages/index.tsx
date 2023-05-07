@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase/init'
 import { useRouter } from 'next/router'
+import { useAppDispatch } from '../../utils/hooks'
+import { login, signOut } from '../../slices/userSlice'
 
 export interface user {
   displayName: string;
@@ -16,6 +18,7 @@ export interface user {
 
 export default function Home() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const [currentUser, setCurrentUser] = useState<user>();
   
   useEffect(() => {
@@ -28,15 +31,21 @@ export default function Home() {
           photoURL: user.photoURL || "",
           uid: user.uid || ""
         });
+        
       }
       else {
         router.push('/login')
       }
     })
 
+ 
+
   }, [])
+  dispatch(login(currentUser!));
 
   console.log(currentUser)
+
+
   return (
     <>
       <Head>
