@@ -22,6 +22,10 @@ export interface Comment {
 commentText: string;
 date: string;
 postId: string;
+id:string;
+userName: string;
+userEmail: string;
+userPhoto: string;
 }
 
 
