@@ -112,7 +112,7 @@ function Tweet({}: Props) {
     <main className="flex">
       <Nav />
 
-      <div className="md:border-r">
+      <div className="md:border-r ">
         {Tweet && <Post tweet={Tweet} />}
 
         <div className="flex items-center p-2 md:p-4 md:space-x-10 space-x-4 border-y">
@@ -128,7 +128,7 @@ function Tweet({}: Props) {
               type="text"
               onChange={(e) => setReply(e.target.value)}
               value={Reply}
-              className=" text-sm md:text-base outline-none  w-2/3 md:w-[360px] md:p-4 "
+              className=" text-sm md:text-base outline-none  w-[200px] md:w-[360px] md:p-4 "
               placeholder="Enter your reply"
             ></input>
             <button
@@ -147,7 +147,7 @@ function Tweet({}: Props) {
         ))}
       </div>
 
-      <div className="hidden lg:flex p-4 fixed top-0 right-20">
+      <div className="hidden lg:flex p-4 fixed top-0 right-10">
         <Timeline
           dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
           options={{ width: "400", height: "800" }}

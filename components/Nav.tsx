@@ -35,7 +35,7 @@ function Nav({}: Props) {
   }
 
   return (
-    <div className=" h-[100vh] sticky top-0 left-0  w-[60px] md:w-1/6 lg:w-1/4  border-r  border-b-[#d3d3d3]  p-2 px-4 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
+    <div className=" h-[100vh] sticky top-0 left-0  w-[50px] md:w-1/6 lg:w-1/4  border-r  border-b-[#d3d3d3]  p-2 px-4 overflow-hidden  flex flex-col items-center md:items-end  lg:items-baseline justify-between md:pr-4 lg:pl-20 ">
       <div className="space-y-4 flex flex-col items-center lg:items-start">
         <Image
           src={Twitterlogo}
@@ -94,7 +94,7 @@ function Nav({}: Props) {
             alt="Profile Picture"
             width={200}
             height={200}
-            className="rounded-full w-[60px] h-6  md:w-[60px] md:h-[60px] object-cover"
+            className="rounded-full min-w-[40px] min-h-[40px] md:w-[60px] md:h-[60px] object-cover"
           />
         ) : (
           <div className=" px-3 py-2 bg-twitter text-white rounded-full">

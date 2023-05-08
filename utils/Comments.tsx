@@ -2,6 +2,7 @@ import Image from "next/image";
 import profile from "../assests/profile.jpg";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { Comment, tweet } from "../components/Feed";
+import TimeAgo from 'react-timeago'
 
 type Props = {};
 function Comments({comment}: {comment: Comment}) {
@@ -26,6 +27,11 @@ function Comments({comment}: {comment: Comment}) {
           <div className="w-[80px]">
             <h3 className=" truncate text-gray-400 font-light">
               {comment.userEmail}
+            </h3>
+          </div>
+          <div className="w-[40px] md:w-auto">
+            <h3 className=" truncate text-gray-400 font-light">
+             <TimeAgo date={comment.date} />
             </h3>
           </div>
         </div>

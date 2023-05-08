@@ -27,7 +27,7 @@ function Post({ tweet }: props) {
             alt="profile picture"
             width={200}
             height={200}
-            className="w-[50px] h-[45px] md:h-[50px]  object-cover rounded-full"
+            className=" w-[40px] h-[40px] md:h-[50px] md:w-[50px]  object-cover rounded-full"
           />
         ) : (
           <div className=" px-3 py-2 bg-twitter text-white rounded-full">
@@ -40,7 +40,7 @@ function Post({ tweet }: props) {
         {/** USERNAME */}
 
         <div className=" flex items-center space-x-1">
-          <div className="w-[100px] md:w-auto">
+          <div className="w-[80px] md:w-auto">
             <h2 className=" truncate font-bold">{tweet.userName} </h2>
           </div>
           <CheckBadgeIcon className="w-6 text-twitter" />
@@ -50,9 +50,13 @@ function Post({ tweet }: props) {
             </h3>
           </div>
           <span className="text-gray-400">.</span>
-          <h4 className="text-gray-400 text-sm  font-light">
+          <div className="w-[20px] md:w-auto">
+          <h4 className="text-gray-400 text-sm truncate ... font-light">
             <TimeAgo date={tweet.date} />
           </h4>
+
+
+          </div>
         </div>
 
         {/**Description and Image */}
