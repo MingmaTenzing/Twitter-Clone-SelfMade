@@ -54,11 +54,12 @@ const tweetadded = useAppSelector((state) => state.tweet)
     getPosts()
   },[tweetadded])
   return (
-    <div className=" w-full md:w-[600px] border-r ">
+    <div className=" md:w-[600px] border-r ">
         <FeedHeader />
         <CreatePost/>
        
         <ShowPosts />
+        
         {
          Tweets ? (Tweets.map((tweet) =>
          <div onClick={() => router.push(`/${tweet.id}`)} className=" hover:bg-gray-100" key={tweet.id}> 

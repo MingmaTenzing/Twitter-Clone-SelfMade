@@ -22,10 +22,15 @@ export default function Home() {
   const [currentUser, setCurrentUser] = useState<user>();
   const user = useAppSelector(state => state.user.value)
 
-  useEffect(() => {
-if(!user) {
 
-}
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(login(currentUser))
+
+    }
+  },[currentUser])
+  useEffect(() => {
+
 onAuthStateChanged(auth, (userCredential) => {
   if (userCredential) {
     setCurrentUser({
@@ -40,9 +45,8 @@ onAuthStateChanged(auth, (userCredential) => {
   }
 });
 
-if (currentUser) {
-  dispatch(login(currentUser))
-}
+  
+
     
   }, []);
 

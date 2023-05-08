@@ -64,7 +64,7 @@ function Post({ tweet }: props) {
         {/**Description and Image */}
         <div className="space-y-3 mt-2">
           <h3>{tweet.tweetText}</h3>
-          <img
+          <LazyLoadImage
             src={tweet.image}
             className=" max-h-[510px] object-contain rounded-lg"
           />

@@ -15,6 +15,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { tweetAdded } from "../slices/tweetslice";
 import { useRouter } from "next/router";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 type Props = {};
 function CreatePost({}: Props) {
@@ -23,7 +24,6 @@ function CreatePost({}: Props) {
   const [imageLink, setimageLink] = useState<string>("");
 
   const user = useAppSelector((state) => state.user.value);
-const router = useRouter();
 
   const dispatch = useAppDispatch();
   
@@ -55,7 +55,7 @@ const router = useRouter();
     <div className="flex space-x-6 p-2 md:p-4 border-t">
       <div>
       {
-          user.photoURL ? ( <img
+          user.photoURL ? ( <LazyLoadImage
             src={user.photoURL}
             alt="profile picture"
             width={200}
@@ -72,6 +72,7 @@ const router = useRouter();
         <textarea
           onChange={(e) => settweetText(e.target.value)}
           maxLength={280}
+          value={tweetText}
           className=" md:text-lg  w-[250px] md:w-[480px] outline-none p-2  h-[100px]  "
           placeholder="What's happening?"
         ></textarea>
@@ -85,6 +86,7 @@ const router = useRouter();
               onChange={(e) => setimageLink(e.target.value)}
               className="border-b p-2  outline-none w-full mt-2"
               type="url"
+              value={imageLink}
               placeholder="Image Link"
             ></input>
           </div>
