@@ -19,7 +19,7 @@ function PostLoading({}: Props) {
 
       </div>
 
-      <div className="w-full h-[400px] bg-gray-400 mt-4" />
+      <div className="w-full h-[200px] md:h-[300px] bg-gray-400 mt-4" />
 
     </div>
 

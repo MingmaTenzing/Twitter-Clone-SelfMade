@@ -46,14 +46,14 @@ function Post({ tweet }: props) {
             <h2 className=" truncate font-bold">{tweet.userName} </h2>
           </div>
           <CheckBadgeIcon className="w-6 text-twitter" />
-          <div className="w-[80px] md:w-auto">
+          <div className="hidden md:flex">
             <h3 className=" truncate text-sm text-gray-400 font-light">
               @{tweet.userName.toLocaleLowerCase()}
             </h3>
           </div>
           <span className="text-gray-400">.</span>
-          <div className="w-[20px] md:w-auto">
-          <h4 className="text-gray-400 text-sm truncate ... font-light">
+          <div className=" ">
+          <h4 className="text-gray-400 text-sm  font-light">
             <TimeAgo date={tweet.date} />
           </h4>
 
