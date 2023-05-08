@@ -11,13 +11,16 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "@/firebase/init";
+import { auth, db } from "@/firebase/init";
 import { Comment, tweet } from "../../components/Feed";
 import Comments from "../../utils/Comments";
 import profile from "../../assests/profile.jpg";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../utils/hooks";
+import { useAppDispatch, useAppSelector } from "../../utils/hooks";
+import { onAuthStateChanged } from "firebase/auth";
+import { user } from ".";
+import { login } from "../../slices/userSlice";
 
 type Props = {};
 function Tweet({}: Props) {
@@ -29,6 +32,10 @@ function Tweet({}: Props) {
   const router = useRouter();
   const user = useAppSelector((state) => state.user.value);
 
+
+ 
+
+
   useEffect(() => {
     if (router.isReady) {
       const postId = Array.isArray(router.query.postId)
@@ -39,32 +46,29 @@ function Tweet({}: Props) {
   }, [router.isReady]);
 
   useEffect(() => {
-
+    
 
     async function getPost() {
-     const docRef = doc(db, "posts", `${postId}`)
-     const docSnap = await getDoc(docRef);
-     const data = docSnap.data();
-     if (data) {
-
-       setTweet({
-        date: data.date,
-        image: data.image,
-        tweetText: data.tweetText,
-        uid: data.uid,
-        userEmail: data.userEmail,
-        userName: data.userName,
-        userPhotoURL: data.userPhotoURL,
-id: data.id,
-       })
-     }
-
+      const docRef = doc(db, "posts", `${postId}`);
+      const docSnap = await getDoc(docRef);
+      const data = docSnap.data();
+      if (data) {
+        setTweet({
+          date: data.date,
+          image: data.image,
+          tweetText: data.tweetText,
+          uid: data.uid,
+          userEmail: data.userEmail,
+          userName: data.userName,
+          userPhotoURL: data.userPhotoURL,
+          id: data.id,
+        });
+      }
     }
 
-    
-    getPost()
-  },[postId])
-  console.log(Tweet)
+    getPost();
+  }, [postId]);
+  console.log(Tweet);
 
   useEffect(() => {
     async function getComments() {
@@ -103,7 +107,7 @@ id: data.id,
       console.error("Error posting comment:", e);
     }
   }
-console.log(user)
+  console.log(user);
   return (
     <main className="flex">
       <Nav />
