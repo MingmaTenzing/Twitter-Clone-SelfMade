@@ -12,7 +12,8 @@ import {
   PhotoIcon,
 } from "@heroicons/react/24/outline";
 import { FormEvent, useEffect, useState } from "react";
-import { useAppSelector } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { tweetAdded } from "../slices/tweetslice";
 
 type Props = {};
 function CreatePost({}: Props) {
@@ -21,6 +22,9 @@ function CreatePost({}: Props) {
   const [imageLink, setimageLink] = useState<string>("");
 
   const user = useAppSelector((state) => state.user.value);
+
+  const dispatch = useAppDispatch();
+  
 
   async function postTWeet(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -36,7 +40,10 @@ function CreatePost({}: Props) {
     };
     try {
       await addDoc(collection(db, "posts"), tweet);
-      console.log("it works");
+      dispatch(tweetAdded())
+      settweetText("")
+      setimageLink("")
+
     } catch (e) {
       console.error("Error adding tweet:", e);
     }

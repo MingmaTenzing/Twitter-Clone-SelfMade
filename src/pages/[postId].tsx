@@ -32,9 +32,11 @@ function Tweet({}: Props) {
   const router = useRouter();
   const user = useAppSelector((state) => state.user.value);
 
-
- 
-
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user]);
 
   useEffect(() => {
     if (router.isReady) {
@@ -46,8 +48,6 @@ function Tweet({}: Props) {
   }, [router.isReady]);
 
   useEffect(() => {
-    
-
     async function getPost() {
       const docRef = doc(db, "posts", `${postId}`);
       const docSnap = await getDoc(docRef);
@@ -68,7 +68,6 @@ function Tweet({}: Props) {
 
     getPost();
   }, [postId]);
-  console.log(Tweet);
 
   useEffect(() => {
     async function getComments() {
@@ -101,6 +100,7 @@ function Tweet({}: Props) {
     try {
       await addDoc(collection(db, "comments"), comment);
       setcommentAdded(!commentadded);
+      setReply("")
 
       console.log("comment added");
     } catch (e) {
@@ -127,6 +127,7 @@ function Tweet({}: Props) {
             <input
               type="text"
               onChange={(e) => setReply(e.target.value)}
+              value={Reply}
               className=" text-sm md:text-base outline-none  w-2/3 md:w-[360px] md:p-4 "
               placeholder="Enter your reply"
             ></input>

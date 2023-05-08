@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/init";
 import { useRouter } from "next/router";
 import { useAppDispatch } from "../../utils/hooks";
-import { login, signOut } from "../../slices/userSlice";
+import { login } from "../../slices/userSlice";
 
 export interface user {
   displayName: string;
@@ -21,14 +21,16 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const [currentUser, setCurrentUser] = useState<user>();
 
+
+
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
+    onAuthStateChanged(auth, (userCredential) => {
+      if (userCredential) {
         setCurrentUser({
-          displayName: user.displayName || "",
-          email: user.email || "",
-          photoURL: user.photoURL || "",
-          uid: user.uid || "",
+          displayName: userCredential.displayName || "",
+          email: userCredential.email || "",
+          photoURL: userCredential.photoURL || "",
+          uid: userCredential.uid || "",
         });
       } else {
         router.push("/login");

@@ -6,6 +6,7 @@ import ShowPosts from "../utils/ShowPosts"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/init";
 import { useRouter } from "next/router";
+import { useAppSelector } from "../utils/hooks";
 
 export interface tweet {
  date: string;
@@ -34,6 +35,10 @@ function Feed({}: Props) {
   const [Tweets, setTweets] = useState<tweet[]>();
   const router = useRouter()
 
+
+const tweetadded = useAppSelector((state) => state.tweet)
+
+
   console.log(Tweets)
   useEffect(() => {
 
@@ -46,7 +51,7 @@ function Feed({}: Props) {
 
     
     getPosts()
-  },[])
+  },[tweetadded])
   return (
     <div className=" w-full md:w-[600px] border-r ">
         <FeedHeader />
