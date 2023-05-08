@@ -14,6 +14,7 @@ import {
 import { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { tweetAdded } from "../slices/tweetslice";
+import { useRouter } from "next/router";
 
 type Props = {};
 function CreatePost({}: Props) {
@@ -22,10 +23,11 @@ function CreatePost({}: Props) {
   const [imageLink, setimageLink] = useState<string>("");
 
   const user = useAppSelector((state) => state.user.value);
+const router = useRouter();
 
   const dispatch = useAppDispatch();
   
-
+ 
   async function postTWeet(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

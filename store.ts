@@ -17,23 +17,19 @@ const reducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-export default configureStore({
+const store = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware => getDefaultMiddleware({
         serializableCheck: false,
     })
 })
 
-{/**
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export const persistor = persistStore(store);
+export default store;
 
 
-export const store = configureStore({
-    reducer: {
-       user: userReducer, 
-    }
-})
 
-export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch 
-*/}
+

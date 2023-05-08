@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/init";
 import { useRouter } from "next/router";
-import { useAppDispatch } from "../../utils/hooks";
+import { useAppDispatch, useAppSelector } from "../../utils/hooks";
 import { login } from "../../slices/userSlice";
 
 export interface user {
@@ -20,30 +20,40 @@ export default function Home() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [currentUser, setCurrentUser] = useState<user>();
-
-
+  const user = useAppSelector(state => state.user.value)
 
   useEffect(() => {
-    onAuthStateChanged(auth, (userCredential) => {
-      if (userCredential) {
-        setCurrentUser({
-          displayName: userCredential.displayName || "",
-          email: userCredential.email || "",
-          photoURL: userCredential.photoURL || "",
-          uid: userCredential.uid || "",
-        });
-      } else {
-        router.push("/login");
-      }
+if(!user) {
+
+}
+onAuthStateChanged(auth, (userCredential) => {
+  if (userCredential) {
+    setCurrentUser({
+      displayName: userCredential.displayName || "",
+      email: userCredential.email || "",
+      photoURL: userCredential.photoURL || "",
+      uid: userCredential.uid || "",
     });
+    
+  } else {
+    router.push("/login");
+  }
+});
+
+if (currentUser) {
+  dispatch(login(currentUser))
+}
+    
   }, []);
 
-  if (currentUser) {
 
-    dispatch(login(currentUser));
-  }
+  
 
-  console.log(currentUser);
+  
+
+  
+  
+
 
   return (
     <>

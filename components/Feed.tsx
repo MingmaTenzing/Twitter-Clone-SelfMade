@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/init";
 import { useRouter } from "next/router";
 import { useAppSelector } from "../utils/hooks";
+import PostLoading from "./PostLoading";
 
 export interface tweet {
  date: string;
@@ -56,13 +57,14 @@ const tweetadded = useAppSelector((state) => state.tweet)
     <div className=" w-full md:w-[600px] border-r ">
         <FeedHeader />
         <CreatePost/>
+       
         <ShowPosts />
         {
-         Tweets && Tweets.map((tweet) =>
+         Tweets ? (Tweets.map((tweet) =>
          <div onClick={() => router.push(`/${tweet.id}`)} className=" hover:bg-gray-100" key={tweet.id}> 
            <Post tweet={tweet} key={tweet.id} />  
 
-          </div>)
+          </div>)) : (new Array(8).fill(0).map((_,index) => (<PostLoading key={index} />)))
         }
     </div>
   )

@@ -21,6 +21,8 @@ import { useAppDispatch, useAppSelector } from "../../utils/hooks";
 import { onAuthStateChanged } from "firebase/auth";
 import { user } from ".";
 import { login } from "../../slices/userSlice";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import PostLoading from "../../components/PostLoading";
 
 type Props = {};
 function Tweet({}: Props) {
@@ -113,7 +115,12 @@ function Tweet({}: Props) {
       <Nav />
 
       <div className="md:border-r ">
-        {Tweet && <Post tweet={Tweet} />}
+
+        <div className="flex space-x-2 p-4">
+          <ArrowLeftIcon onClick={() => router.push("/")} className="w-4 md:w-6" />
+          <h2 className="font-bold md:text-xl">Tweet</h2>
+          </div>
+        {!Tweet ? (<PostLoading />):(<Post tweet={Tweet} />) }
 
         <div className="flex items-center p-2 md:p-4 md:space-x-10 space-x-4 border-y">
           <img
@@ -139,6 +146,10 @@ function Tweet({}: Props) {
             </button>
           </form>
         </div>
+
+{/**  LOADING SKELETON*/}
+     
+
 
         {/** COMMENTS SECTION */}
 

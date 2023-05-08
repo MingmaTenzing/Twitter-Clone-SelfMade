@@ -1,6 +1,8 @@
 import Image from "next/image";
 import profile from "../assests/profile.jpg";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import {
   ArrowPathRoundedSquareIcon,
   ArrowUpTrayIcon,
@@ -22,7 +24,7 @@ function Post({ tweet }: props) {
     <div className="p-2  md:p-4 flex space-x-2 ">
       <div className="">
         {tweet.userPhotoURL ? (
-          <img
+          <LazyLoadImage
             src={tweet.userPhotoURL}
             alt="profile picture"
             width={200}
