@@ -122,14 +122,19 @@ function Tweet({}: Props) {
           </div>
         {!Tweet ? (<PostLoading />):(<Post tweet={Tweet} />) }
 
-        <div className="flex items-center p-2 md:p-4 md:space-x-10 space-x-4 border-y">
-          <img
-            src={user.photoURL}
-            alt="profile"
-            width={200}
-            height={200}
-            className="w-[40px] h-[40px]  object-cover object-center rounded-full"
-          />
+        <div className="flex items-center p-2 md:p-4 md:space-x-5 space-x-4 border-y">
+          {
+            user.photoURL? ( <img
+              src={user.photoURL}
+              alt="profile"
+              width={200}
+              height={200}
+              className="w-[40px] h-[40px]  object-cover object-center rounded-full"
+            />) : ( <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
+            {(user?.displayName[0]?.toLocaleUpperCase())}
+            </div>)
+          }
+         
           <form onSubmit={sendReply} className="md:space-x-4">
             <input
               type="text"

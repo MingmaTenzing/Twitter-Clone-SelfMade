@@ -28,7 +28,7 @@ function SigninUser({}: Props) {
       });
   }
   return (
-    <div className="p-4">
+    <div className="p-4 md:w-[500px] m-auto md:mt-10">
       <div className="flex  flex-col items-center space-y-4">
         <Image
           src={twitter}

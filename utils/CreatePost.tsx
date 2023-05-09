@@ -62,7 +62,7 @@ function CreatePost({}: Props) {
             height={200}
             className="w-[50px] h-[50px]   object-cover  object-center rounded-full"
           />) : (
-            <div className=" px-3 py-2 bg-twitter text-white rounded-full">
+            <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
               {(user?.displayName[0]?.toLocaleUpperCase())}
               </div>
           )
@@ -104,12 +104,22 @@ function CreatePost({}: Props) {
             <MapPinIcon className="w-6 text-twitter" />
           </div>
           <div>
-            <button
+            {
+              tweetText ? ( <button
+                type="submit"
+                className=" bg-twitter font-bold px-4 py-2 rounded-full text-white"
+              >
+                Tweet
+              </button>) : ( <button
+              disabled
               type="submit"
-              className=" bg-twitter font-bold px-4 py-2 rounded-full text-white"
+              className=" bg-twitter opacity-30 font-bold px-4 py-2 rounded-full text-white"
             >
               Tweet
-            </button>
+            </button>)
+            }
+            
+           
           </div>
         </div>
       </form>

@@ -32,7 +32,7 @@ function Post({ tweet }: props) {
             className=" w-[40px] h-[40px] md:h-[50px] md:w-[50px]  object-cover rounded-full"
           />
         ) : (
-          <div className=" px-3 py-2 bg-twitter text-white rounded-full">
+          <div className=" px-4 py-[8px] bg-twitter text-white rounded-full">
             {tweet.userName[0].toUpperCase()}
           </div>
         )}
@@ -45,7 +45,10 @@ function Post({ tweet }: props) {
           <div className="w-[80px] md:w-auto">
             <h2 className=" truncate font-bold">{tweet.userName} </h2>
           </div>
-          <CheckBadgeIcon className="w-6 text-twitter" />
+          {
+            tweet.userPhotoURL &&           <CheckBadgeIcon className="w-6 text-twitter" />
+
+          }
           <div className="hidden md:flex">
             <h3 className=" truncate text-sm text-gray-400 font-light">
               @{tweet.userName.toLocaleLowerCase()}

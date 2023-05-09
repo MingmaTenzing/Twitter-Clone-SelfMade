@@ -56,7 +56,10 @@ const tweetadded = useAppSelector((state) => state.tweet)
   return (
     <div className=" md:w-[600px]  overflow-x-hidden border-r ">
         <FeedHeader />
+        <section  id="createpost">
         <CreatePost/>
+
+        </section>
        
         <ShowPosts />
 

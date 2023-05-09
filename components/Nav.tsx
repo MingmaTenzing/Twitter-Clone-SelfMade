@@ -83,12 +83,13 @@ function Nav({}: Props) {
           <EllipsisHorizontalCircleIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">More</h2>
         </div>
-        <div className="">
+        <Link href="#createpost">
           <PlusIcon className="w-8 lg:hidden" />
+          
           <button className=" hidden text-lg lg:flex px-20 rounded-full font-bold py-4 text-white bg-[#1DA1F2] ">
             Tweet
           </button>
-        </div>
+        </Link>
       </div>
 
       <div className="  lg:flex lg:items-center lg:space-x-3 ">
@@ -101,7 +102,7 @@ function Nav({}: Props) {
             className="rounded-full min-w-[40px] min-h-[40px] md:w-[60px] md:h-[60px] object-cover"
           />
         ) : (
-          <div className=" px-3 py-2 bg-twitter text-white rounded-full">
+          <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
             {" "}
             {user?.displayName[0]}{" "}
           </div>
@@ -115,7 +116,7 @@ function Nav({}: Props) {
             <CheckBadgeIcon className="w-6 text-twitter" />
           </div>
 
-          <h3 className=" font-light text-gray-400 text-sm">@{user?.email}</h3>
+          <h3 className=" font-light text-gray-400 text-sm">{user?.email}</h3>
         </div>
       </div>
     </div>

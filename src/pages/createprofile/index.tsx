@@ -44,7 +44,7 @@ function CreateProfile({}: Props) {
   console.log(auth.currentUser)
 
   return (
-    <div className="p-4">
+    <div className="p-4  md:w-[500px] mt-10 m-auto">
       <div className="flex  flex-col items-center space-y-4">
         <Image
           src={twitter}
@@ -71,7 +71,7 @@ function CreateProfile({}: Props) {
           <div className="">
             <input
               minLength={8}
-              required
+              
               type="url"
               className="border p-3 outline-none w-full"
               placeholder="PROFILE PHOTO URL (OPTIONAL)"

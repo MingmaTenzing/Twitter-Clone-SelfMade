@@ -28,7 +28,7 @@ function Signup({}: Props) {
 
     
   return (
-    <div className="p-4">
+    <div className="p-4 md:mt-10 md:w-[500px] m-auto">
         <div className="flex  flex-col items-center space-y-4">
 
      
