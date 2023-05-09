@@ -99,7 +99,7 @@ function SigninUser({}: Props) {
       <div className="mt-8">
         <h3 className="text-center">
           {" "}
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signup" className="text-twitter">
             Signup
           </Link>{" "}
