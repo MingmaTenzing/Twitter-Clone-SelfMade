@@ -11,15 +11,23 @@ import {
   EllipsisHorizontalIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
+
 import Comments from "./Comments";
 import { tweet } from "../components/Feed";
 import TimeAgo from "react-timeago";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 interface props {
   tweet: tweet;
 }
 
 function Post({ tweet }: props) {
+  const [liked, setLiked] = useState<boolean>(false);
+  const [retweet, setreTweet] = useState<boolean>(false);
+  const [share, setShare] = useState<boolean>(false);
+  const [chartBar, setChartBart] = useState<boolean>(false);
+  const router = useRouter();
   return (
     <div className="p-2  md:p-4 flex space-x-2 ">
       <div className="">
@@ -45,10 +53,9 @@ function Post({ tweet }: props) {
           <div className="w-[80px] md:w-auto">
             <h2 className=" truncate font-bold">{tweet.userName} </h2>
           </div>
-          {
-            tweet.userPhotoURL &&           <CheckBadgeIcon className="w-6 text-twitter" />
-
-          }
+          {tweet.userPhotoURL && (
+            <CheckBadgeIcon className="w-6 text-twitter" />
+          )}
           <div className="hidden md:flex">
             <h3 className=" truncate text-sm text-gray-400 font-light">
               @{tweet.userName.toLocaleLowerCase()}
@@ -56,16 +63,17 @@ function Post({ tweet }: props) {
           </div>
           <span className="text-gray-400">.</span>
           <div className=" ">
-          <h4 className="text-gray-400 text-sm  font-light">
-            <TimeAgo date={tweet.date} />
-          </h4>
-
-
+            <h4 className="text-gray-400 text-sm  font-light">
+              <TimeAgo date={tweet.date} />
+            </h4>
           </div>
         </div>
 
         {/**Description and Image */}
-        <div className="space-y-3 mt-2">
+        <div
+          onClick={() => router.push(`/${tweet.id}`)}
+          className="space-y-3 mt-2 cursor-pointer"
+        >
           <h3>{tweet.tweetText}</h3>
           <LazyLoadImage
             src={tweet.image}
@@ -76,23 +84,67 @@ function Post({ tweet }: props) {
         {/**LIKES AND COMMENTS */}
         <div className="flex space-x-4 md:space-x-10 items-center  mt-3">
           <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex ">
-            <ChatBubbleOvalLeftIcon className="w-4 md:w-6" />
+            <ChatBubbleOvalLeftIcon
+              className="w-4 md:w-6 cursor-pointer"
+              onClick={() => router.push(`/${tweet.id}`)}
+            />
             <span className="text-sm md:text-base">1,344</span>
           </div>
           <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
-            <ArrowPathRoundedSquareIcon className="w-4 md:w-6" />
+            {retweet ? (
+              <ArrowPathRoundedSquareIcon
+                className="w-4 md:w-6 cursor-pointer text-orange-500 "
+                onClick={() => setreTweet(!retweet)}
+              />
+            ) : (
+              <ArrowPathRoundedSquareIcon
+                className="w-4 md:w-6 cursor-pointer"
+                onClick={() => setreTweet(!retweet)}
+              />
+            )}
             <span className="text-sm md:text-base">2k</span>
           </div>
           <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
-            <HeartIcon className="w-4 md:w-6" />
+            {" "}
+            {liked ? (
+              <HeartIcon
+                onClick={() => setLiked(!liked)}
+                className="w-4 md:w-6 cursor-pointer   text-pink-400"
+              />
+            ) : (
+              <HeartIcon
+                onClick={() => setLiked(!liked)}
+                className="w-4 md:w-6 cursor-pointer"
+              />
+            )}
             <span className="text-sm md:text-base">2M</span>
           </div>
           <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
-            <ChartBarIcon className="w-4 md:w-6" />
+            {chartBar ? (
+              <ChartBarIcon
+                className="w-4 md:w-6 cursor-pointer text-green-500"
+                onClick={() => setChartBart(!chartBar)}
+              />
+            ) : (
+              <ChartBarIcon
+                className="w-4 md:w-6 cursor-pointer"
+                onClick={() => setChartBart(!chartBar)}
+              />
+            )}
             <span className="text-sm md:text-base">30K</span>
           </div>
           <div className=" text-gray-500  space-x-1 cursor-pointer  items-center flex">
-            <ArrowUpTrayIcon className="w-4 md:w-6" />
+            {share ? (
+              <ArrowUpTrayIcon
+                className="w-4 md:w-6 cursor-pointer text-twitter"
+                onClick={() => setShare(!share)}
+              />
+            ) : (
+              <ArrowUpTrayIcon
+                className="w-4 md:w-6 cursor-pointer"
+                onClick={() => setShare(!share)}
+              />
+            )}
           </div>
         </div>
       </div>

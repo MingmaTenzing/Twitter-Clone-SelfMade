@@ -68,7 +68,7 @@ const tweetadded = useAppSelector((state) => state.tweet)
 
         {
          Tweets ? (Tweets.map((tweet) =>
-         <div onClick={() => router.push(`/${tweet.id}`)} className=" hover:bg-gray-100" key={tweet.id}> 
+         <div className=" hover:bg-gray-100" key={tweet.id}> 
            <Post tweet={tweet} key={tweet.id} />  
 
           </div>)) : (new Array(8).fill(0).map((_,index) => (<PostLoading key={index} />)))

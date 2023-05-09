@@ -50,36 +50,36 @@ function Nav({}: Props) {
         />
         <Link href="/">
         
-        <div  className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4 ">
+        <div  className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4 ">
           <HomeIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg    "  >Home</h2>
         </div>
         </Link>
-        <div className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
+        <div className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
           <MagnifyingGlassIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">Search</h2>
         </div>
 
-        <div className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
+        <div className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
           <BellIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">Notifications</h2>
         </div>
-        <div className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
+        <div className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
           <EnvelopeIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">Messages</h2>
         </div>
 
-        <div className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
+        <div className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
           <BookmarkIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">Bookmarks</h2>
         </div>
-        <div onClick={signOutCurrentUser} className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
+        <div onClick={signOutCurrentUser} className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
           <UserIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  " >
             Sign Out
           </h2>
         </div>
-        <div className="flex items-center hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
+        <div className="flex items-center md:hover:bg-gray-200  cursor-pointer p-2 px-4 rounded-full space-x-4">
           <EllipsisHorizontalCircleIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">More</h2>
         </div>
