@@ -34,14 +34,11 @@ function CreateProfile({}: Props) {
       photoURL: photoURL,
     })
       .then(() => {
-        console.log("user updated");
         router.push("/")
       })
       .catch((error) => {
-        console.log(error);
       });
   }
-  console.log(auth.currentUser)
 
   return (
     <div className="p-4  md:w-[500px] mt-10 m-auto">

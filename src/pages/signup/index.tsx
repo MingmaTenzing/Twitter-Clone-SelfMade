@@ -15,10 +15,11 @@ function Signup({}: Props) {
   const [emilAlreadyinUse, setEmailAlreadyinUse] = useState<boolean>(false);
 
   function signupUser(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
     createUserWithEmailAndPassword(auth, Email!, Password!)
-      .then((user) => {
+      .then(({user}) => {
+        console.log(user)
         router.push("/createprofile");
+        
       })
       .catch((error) => {
         console.error(error.code);

@@ -28,7 +28,6 @@ function SigninUser({}: Props) {
         router.push("/");
       })
       .catch((error) => {
-        console.log(error.code);
         if (error.code === "auth/wrong-password") {
           setWrongPassword(true);
         }
