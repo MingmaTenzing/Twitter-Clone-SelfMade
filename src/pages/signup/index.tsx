@@ -16,8 +16,8 @@ function Signup({}: Props) {
 
   function signupUser(e: FormEvent<HTMLFormElement>) {
     createUserWithEmailAndPassword(auth, Email!, Password!)
-      .then(({user}) => {
-        console.log(user)
+      .then(() => {
+      
         router.push("/createprofile");
         
       })

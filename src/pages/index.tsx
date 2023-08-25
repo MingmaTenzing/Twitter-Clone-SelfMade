@@ -32,6 +32,7 @@ export default function Home() {
   useEffect(() => {
 
 onAuthStateChanged(auth, (userCredential) => {
+
   if (userCredential) {
     setCurrentUser({
       displayName: userCredential.displayName || "",

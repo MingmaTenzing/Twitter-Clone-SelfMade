@@ -86,7 +86,6 @@ function Tweet({}: Props) {
     }
     getComments();
   }, [commentadded, postId]);
-  console.log(comments);
 
   async function sendReply(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -105,12 +104,10 @@ function Tweet({}: Props) {
       setcommentAdded(!commentadded);
       setReply("")
 
-      console.log("comment added");
     } catch (e) {
       console.error("Error posting comment:", e);
     }
   }
-  console.log(user);
   return (
     <main className="flex">
        <Head>
