@@ -13,7 +13,6 @@ function Signup({}: Props) {
   const [Email, setEmail] = useState<string>();
   const [Password, setPassword] = useState<string>();
   const [emilAlreadyinUse, setEmailAlreadyinUse] = useState<boolean>(false);
-console.log(emilAlreadyinUse)
   function signupUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, Email!, Password!)

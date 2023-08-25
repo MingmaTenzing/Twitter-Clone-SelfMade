@@ -47,7 +47,6 @@ function CreatePost({}: Props) {
       setimageLink("");
       toast.success("Tweet Added Successfully");
     } catch (e) {
-      console.error("Error adding tweet:", e);
       toast.error("Error adding tweet");
     }
   }
