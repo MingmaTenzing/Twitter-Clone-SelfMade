@@ -67,7 +67,7 @@ const tweetadded = useAppSelector((state) => state.tweet)
 
 
         {
-         Tweets ? (Tweets.map((tweet) =>
+         Tweets ? (Tweets.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() ).map((tweet) =>
          <div className=" hover:bg-gray-100" key={tweet.id}> 
            <Post tweet={tweet} key={tweet.id} />  
 
