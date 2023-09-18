@@ -54,6 +54,7 @@ function SigninUser({}: Props) {
           width={200}
           height={200}
           className="w-20"
+          onClick={() => router.push("/")}
         />
 
         <h1 className="text-2xl font-bold text-center ">Sign in to your Tweety Account</h1>

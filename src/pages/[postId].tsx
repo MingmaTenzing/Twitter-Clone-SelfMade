@@ -15,6 +15,7 @@ import { auth, db } from "@/firebase/init";
 import { Comment, tweet } from "../../components/Feed";
 import Comments from "../../utils/Comments";
 import profile from "../../assests/profile.jpg";
+import Twitter from "../../assests/twitter.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks";
@@ -138,9 +139,13 @@ function Tweet({}: Props) {
               className="w-[40px] h-[40px]  object-cover object-center rounded-full"
             />
           ) : (
-            <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
-              {user?.displayName[0]?.toLocaleUpperCase()}
-            </div>
+            <Image
+              src={Twitter}
+              alt="profile"
+              width={200}
+              height={200}
+              className="w-[40px] h-[40px]  object-cover object-center rounded-full"
+            />
           )}
 
           <form onSubmit={sendReply} className="md:space-x-4">
@@ -151,12 +156,21 @@ function Tweet({}: Props) {
               className=" text-sm md:text-base outline-none  w-[200px] md:w-[360px] md:p-4 "
               placeholder="Enter your reply"
             ></input>
-            <button
+            {
+              !user.uid? (<button
+                type="submit"
+                disabled
+                className=" bg-twitter opacity-40  cursor-not-allowed text-white rounded-full font-semibold px-3 md:px-5 py-2"
+              >
+                Reply
+              </button>) : (<button
               type="submit"
               className=" bg-twitter text-white rounded-full font-semibold px-3 md:px-5 py-2"
             >
               Reply
-            </button>
+            </button>)
+            }
+            
           </form>
         </div>
 
@@ -175,6 +189,14 @@ function Tweet({}: Props) {
           options={{ width: "400", height: "800" }}
         />
       </div>
+      {!user.uid && (
+          <div className=" flex  justify-center items-center   fixed left-0 bottom-0 w-full h-[60px] bg-black">
+            <p className=" font-semibold text-white">
+              Log in and start Tweeting?{" "}
+              <span className="  text-twitter  cursor-pointer" onClick={(() => router.push("/login"))}> Sign In</span>
+            </p>
+          </div>
+        )}
     </main>
   );
 }

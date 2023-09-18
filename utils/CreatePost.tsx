@@ -17,7 +17,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import toast, { Toaster } from "react-hot-toast";
 import { tweetAdded } from "../slices/tweetslice";
-
+import Twitter from "../assests/twitter.png";
 
 type Props = {};
 function CreatePost({}: Props) {
@@ -26,7 +26,7 @@ function CreatePost({}: Props) {
   const [imageLink, setimageLink] = useState<string>("");
 
   const user = useAppSelector((state) => state.user.value);
-  const dispatch  = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function postTWeet(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,7 +42,7 @@ function CreatePost({}: Props) {
     };
     try {
       await addDoc(collection(db, "posts"), tweet);
-      dispatch(tweetAdded())
+      dispatch(tweetAdded());
       settweetText("");
       setimageLink("");
       toast.success("Tweet Added Successfully");
@@ -50,9 +50,9 @@ function CreatePost({}: Props) {
       toast.error("Error adding tweet");
     }
   }
-
+  console.log(user);
   return (
-    <div className="flex space-x-6 p-2 md:p-4 border-t">
+    <div className="flex  space-x-2 p-2 md:p-4 border-t">
       <Toaster />
       <div>
         {user.photoURL ? (
@@ -61,11 +61,17 @@ function CreatePost({}: Props) {
             alt="profile picture"
             width={200}
             height={200}
-            className="w-[50px] h-[50px]   object-cover  object-center rounded-full"
+            className="  w-[40px] h-[40px]  object-cover  object-center rounded-full"
           />
         ) : (
-          <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
-            {user?.displayName[0]?.toLocaleUpperCase()}
+          <div className=" w-[40px] h-[40px]  rounded-full ">
+            <Image
+              src={Twitter}
+              alt="twitter"
+              width={50}
+              height={50}
+              className=" w-full h-full"
+            />
           </div>
         )}
       </div>
@@ -105,7 +111,7 @@ function CreatePost({}: Props) {
             <MapPinIcon className="w-6 text-twitter" />
           </div>
           <div>
-            {tweetText ? (
+            {user.uid !== "" && tweetText ? (
               <button
                 type="submit"
                 className=" bg-twitter font-bold px-4 py-2 rounded-full text-white"
@@ -116,7 +122,7 @@ function CreatePost({}: Props) {
               <button
                 disabled
                 type="submit"
-                className=" bg-twitter opacity-30 font-bold px-4 py-2 rounded-full text-white"
+                className=" cursor-not-allowed bg-twitter opacity-30 font-bold px-4 py-2 rounded-full text-white"
               >
                 Tweet
               </button>

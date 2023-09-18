@@ -41,7 +41,7 @@ function Post({ tweet }: props) {
           />
         ) : (
           <div className=" px-4 py-[8px] bg-twitter text-white rounded-full">
-            {tweet.userName[0].toUpperCase()}
+            {tweet.userName[0]?.toUpperCase() || 'T'}
           </div>
         )}
       </div>
