@@ -54,6 +54,7 @@ export default function Home() {
       <div className="flex justify-center">
         <Nav />
         <Feed />
+        <div className=" hidden lg:flex w-[350px]"></div>
         {/* <div className="hidden lg:flex p-4  ">
           <Timeline
             dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
