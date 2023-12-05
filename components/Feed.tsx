@@ -61,7 +61,7 @@ function Feed({}: Props) {
             (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
           ).map((tweet) => (
             <div
-              className="  bg-black hover:bg-[#080402] cursor-pointer "
+              className="  bg-black  hover:bg-sideMenuBg hover:bg-opacity-20 cursor-pointer "
               key={tweet.id}
             >
               <Post tweet={tweet} key={tweet.id} />

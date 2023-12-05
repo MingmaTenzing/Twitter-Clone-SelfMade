@@ -23,6 +23,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import PostLoading from "../../components/PostLoading";
 import Head from "next/head";
 import toast, { Toaster } from "react-hot-toast";
+import SideMenu from "../../components/SideMenu";
 
 type Props = {};
 function Tweet({}: Props) {
@@ -108,7 +109,7 @@ function Tweet({}: Props) {
     }
   }
   return (
-    <main className="flex bg-black text-white">
+    <main className="flex justify-center bg-black text-white relative">
       <Toaster />
       <Head>
         <title>{Tweet?.userName}</title>
@@ -118,7 +119,7 @@ function Tweet({}: Props) {
       </Head>
       <Nav />
 
-      <div className="md:border-r   ">
+      <div className="md:border-r  md:w-[600px]  md:min-w-[600px] overflow-x-hidden ">
         <div className="flex space-x-2 p-4">
           <ArrowLeftIcon
             onClick={() => router.push("/")}
@@ -182,9 +183,10 @@ function Tweet({}: Props) {
           <Comments comment={comment} key={comment.id} />
         ))}
       </div>
+      <SideMenu />
 
       {!user.uid && (
-        <div className=" flex  justify-center items-center   fixed left-0 bottom-0 w-full h-[60px] bg-black">
+        <div className=" flex  justify-center items-center   absolute left-0 bottom-0 w-full h-[60px] bg-black">
           <p className=" font-semibold text-white">
             Log in and start Tweeting?{" "}
             <span
