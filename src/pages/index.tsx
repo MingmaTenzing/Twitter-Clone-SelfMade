@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Nav from "../../components/Nav";
 import Feed from "../../components/Feed";
-import { Timeline } from "react-twitter-widgets";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/init";
@@ -55,12 +54,12 @@ export default function Home() {
       <div className="flex justify-center">
         <Nav />
         <Feed />
-        <div className="hidden lg:flex p-4  ">
+        {/* <div className="hidden lg:flex p-4  ">
           <Timeline
             dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
             options={{ width: "400", height: "800" }}
           />
-        </div>{" "}
+        </div>{" "} */}
         {userNotloggedIn && (
           <div className=" flex  justify-center items-center   fixed left-0 bottom-0 w-full h-[60px] bg-black">
             <p className=" font-semibold text-white">

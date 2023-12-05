@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Twitterlogo from "../assests/X_logo_2023_(white).png";
 import {
-  BeakerIcon,
   BellIcon,
   BookmarkIcon,
   ClipboardIcon,
@@ -19,8 +18,6 @@ import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { logOut } from "../slices/userSlice";
 import Link from "next/link";
-import { useEffect } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 type Props = {};
 function Nav({}: Props) {
   const router = useRouter();
@@ -102,7 +99,7 @@ function Nav({}: Props) {
 
       <div className="  lg:flex lg:items-center lg:space-x-3 ">
         {user?.photoURL ? (
-          <LazyLoadImage
+          <img
             src={user?.photoURL!}
             alt="Profile Picture"
             width={200}

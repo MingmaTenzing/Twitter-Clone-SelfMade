@@ -1,4 +1,3 @@
-import { Timeline } from "react-twitter-widgets";
 import Nav from "../../components/Nav";
 import Post from "../../utils/Post";
 import { FormEvent, useEffect, useState } from "react";
@@ -184,12 +183,6 @@ function Tweet({}: Props) {
         ))}
       </div>
 
-      <div className="hidden lg:flex p-4 fixed top-0 right-10">
-        <Timeline
-          dataSource={{ sourceType: "profile", screenName: "elonmusk" }}
-          options={{ width: "400", height: "800" }}
-        />
-      </div>
       {!user.uid && (
         <div className=" flex  justify-center items-center   fixed left-0 bottom-0 w-full h-[60px] bg-black">
           <p className=" font-semibold text-white">
