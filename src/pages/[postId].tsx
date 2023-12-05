@@ -15,7 +15,7 @@ import { auth, db } from "@/firebase/init";
 import { Comment, tweet } from "../../components/Feed";
 import Comments from "../../utils/Comments";
 import profile from "../../assests/profile.jpg";
-import Twitter from "../../assests/twitter.png"
+import Twitter from "../../assests/twitter.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks";
@@ -102,14 +102,14 @@ function Tweet({}: Props) {
     try {
       await addDoc(collection(db, "comments"), comment);
       setcommentAdded(!commentadded);
-      toast.success("Comment added successfully")
+      toast.success("Comment added successfully");
       setReply("");
     } catch (e) {
       console.error("Error posting comment:", e);
     }
   }
   return (
-    <main className="flex">
+    <main className="flex bg-black text-white">
       <Toaster />
       <Head>
         <title>{Tweet?.userName}</title>
@@ -119,7 +119,7 @@ function Tweet({}: Props) {
       </Head>
       <Nav />
 
-      <div className="md:border-r ">
+      <div className="md:border-r   ">
         <div className="flex space-x-2 p-4">
           <ArrowLeftIcon
             onClick={() => router.push("/")}
@@ -129,7 +129,7 @@ function Tweet({}: Props) {
         </div>
         {!Tweet ? <PostLoading /> : <Post tweet={Tweet} />}
 
-        <div className="flex items-center p-2 md:p-4 md:space-x-5 space-x-4 border-y">
+        <div className="flex items-center p-2 md:p-4 md:space-x-5 space-x-4 border-y    bg-black text-white">
           {user.photoURL ? (
             <img
               src={user.photoURL}
@@ -153,24 +153,25 @@ function Tweet({}: Props) {
               type="text"
               onChange={(e) => setReply(e.target.value)}
               value={Reply}
-              className=" text-sm md:text-base outline-none  w-[200px] md:w-[360px] md:p-4 "
+              className=" text-sm md:text-base outline-none  w-[200px] md:w-[360px] md:p-4 bg-black text-white "
               placeholder="Enter your reply"
             ></input>
-            {
-              !user.uid? (<button
+            {!user.uid ? (
+              <button
                 type="submit"
                 disabled
                 className=" bg-twitter opacity-40  cursor-not-allowed text-white rounded-full font-semibold px-3 md:px-5 py-2"
               >
                 Reply
-              </button>) : (<button
-              type="submit"
-              className=" bg-twitter text-white rounded-full font-semibold px-3 md:px-5 py-2"
-            >
-              Reply
-            </button>)
-            }
-            
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className=" bg-twitter text-white rounded-full font-semibold px-3 md:px-5 py-2"
+              >
+                Reply
+              </button>
+            )}
           </form>
         </div>
 
@@ -190,13 +191,19 @@ function Tweet({}: Props) {
         />
       </div>
       {!user.uid && (
-          <div className=" flex  justify-center items-center   fixed left-0 bottom-0 w-full h-[60px] bg-black">
-            <p className=" font-semibold text-white">
-              Log in and start Tweeting?{" "}
-              <span className="  text-twitter  cursor-pointer" onClick={(() => router.push("/login"))}> Sign In</span>
-            </p>
-          </div>
-        )}
+        <div className=" flex  justify-center items-center   fixed left-0 bottom-0 w-full h-[60px] bg-black">
+          <p className=" font-semibold text-white">
+            Log in and start Tweeting?{" "}
+            <span
+              className="  text-twitter  cursor-pointer"
+              onClick={() => router.push("/login")}
+            >
+              {" "}
+              Sign In
+            </span>
+          </p>
+        </div>
+      )}
     </main>
   );
 }
