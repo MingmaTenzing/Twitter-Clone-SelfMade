@@ -1,7 +1,7 @@
 type Props = {};
 function FeedHeader({}: Props) {
   return (
-    <div className="  ">
+    <div className="   ">
       <h1 className="font-bold text-2xl p-4">Home</h1>
       <div className="flex justify-around mt-4  p-1 ">
         <div className="relative">

@@ -29,7 +29,7 @@ function Post({ tweet }: props) {
   const [chartBar, setChartBart] = useState<boolean>(false);
   const router = useRouter();
   return (
-    <div className="p-2  md:p-4 flex space-x-2 ">
+    <div className="p-2  md:p-4 flex space-x-2  border">
       <div className="">
         {tweet.userPhotoURL ? (
           <LazyLoadImage
@@ -41,7 +41,7 @@ function Post({ tweet }: props) {
           />
         ) : (
           <div className=" px-4 py-[8px] bg-twitter text-white rounded-full">
-            {tweet.userName[0]?.toUpperCase() || 'T'}
+            {tweet.userName[0]?.toUpperCase() || "T"}
           </div>
         )}
       </div>

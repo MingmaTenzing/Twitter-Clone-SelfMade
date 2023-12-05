@@ -17,7 +17,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import toast, { Toaster } from "react-hot-toast";
 import { tweetAdded } from "../slices/tweetslice";
-import Twitter from "../assests/twitter.png";
+import Twitter from "../assests/X_logo_2023_(white).png";
 
 type Props = {};
 function CreatePost({}: Props) {
@@ -52,7 +52,7 @@ function CreatePost({}: Props) {
   }
   console.log(user);
   return (
-    <div className="flex  space-x-2 p-2 md:p-4 border-t">
+    <div className="flex  space-x-2 p-2 md:p-4 border-t ">
       <Toaster />
       <div>
         {user.photoURL ? (
@@ -80,10 +80,10 @@ function CreatePost({}: Props) {
           onChange={(e) => settweetText(e.target.value)}
           maxLength={280}
           value={tweetText}
-          className=" md:text-lg  w-[250px] md:w-[480px] outline-none p-2  h-[100px]  "
+          className=" md:text-lg  w-[250px] md:w-[480px] outline-none p-2  h-[100px]  bg-black "
           placeholder="What's happening?"
         ></textarea>
-        <div className="flex space-x-1  border-b">
+        <div className="flex space-x-1   border-b">
           <GlobeAsiaAustraliaIcon className="w-4 text-twitter" />
           <h3 className=" text-twitter font-bold">Everyone can reply</h3>
         </div>
@@ -91,7 +91,7 @@ function CreatePost({}: Props) {
           <div>
             <input
               onChange={(e) => setimageLink(e.target.value)}
-              className="border-b p-2  outline-none w-full mt-2"
+              className="border-b p-2  outline-none w-full mt-2 bg-black"
               type="url"
               value={imageLink}
               placeholder="Image Link"
