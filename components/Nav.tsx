@@ -71,13 +71,25 @@ function Nav({}: Props) {
           <BookmarkIcon className="w-8" />
           <h2 className="hidden lg:flex text-lg  ">Bookmarks</h2>
         </div>
-        <div
-          onClick={signOutCurrentUser}
-          className="flex items-center md:hover:bg-[#242424] p-2 px-4 cursor-pointer rounded-full space-x-4"
-        >
-          <UserIcon className="w-8" />
-          <h2 className="hidden lg:flex text-lg  ">Sign Out</h2>
-        </div>
+
+        {user.uid ? (
+          <div
+            onClick={signOutCurrentUser}
+            className="flex items-center md:hover:bg-[#242424] p-2 px-4 cursor-pointer rounded-full space-x-4"
+          >
+            <UserIcon className="w-8" />
+            <h2 className="hidden lg:flex text-lg  ">Sign Out</h2>
+          </div>
+        ) : (
+          <div
+            onClick={() => router.push("/login")}
+            className="flex items-center md:hover:bg-[#242424] p-2 px-4 cursor-pointer rounded-full space-x-4"
+          >
+            <UserIcon className="w-8" />
+            <h2 className="hidden lg:flex text-lg  ">Sign In</h2>
+          </div>
+        )}
+
         <div className="flex hidden md:flex items-center md:hover:bg-[#242424] p-2 px-4 cursor-pointer rounded-full space-x-4">
           <Image src={Twitterlogo} alt="image" className=" w-8" />
           <h2 className="hidden lg:flex text-lg  ">Premium</h2>
@@ -97,33 +109,37 @@ function Nav({}: Props) {
         </div>
       </div>
 
-      <div className="  lg:flex lg:items-center lg:space-x-3 ">
-        {user?.photoURL ? (
-          <img
-            src={user?.photoURL!}
-            alt="Profile Picture"
-            width={200}
-            height={200}
-            className="rounded-full  w-10 h-10   object-cover"
-          />
-        ) : (
-          <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
-            {" "}
-            {user?.displayName[0]}{" "}
-          </div>
-        )}
-
-        <div className="hidden lg:flex lg:flex-col">
-          <div className="flex space-x-2">
-            <div className="  ">
-              <h2 className=" font-bold  truncate ... ">{user?.displayName}</h2>
+      {user && (
+        <div className="  lg:flex lg:items-center lg:space-x-3 ">
+          {user?.photoURL ? (
+            <img
+              src={user?.photoURL!}
+              alt="Profile Picture"
+              width={200}
+              height={200}
+              className="rounded-full  w-10 h-10   object-cover"
+            />
+          ) : (
+            <div className=" px-3 py-[6px] bg-twitter text-white rounded-full">
+              {" "}
+              {user?.displayName[0]}{" "}
             </div>
-            <CheckBadgeIcon className="w-6 text-twitter" />
-          </div>
+          )}
 
-          <h3 className=" font-light text-gray-400 text-sm">{user?.email}</h3>
+          <div className="hidden lg:flex lg:flex-col">
+            <div className="flex space-x-2">
+              <div className="  ">
+                <h2 className=" font-bold  truncate ... ">
+                  {user?.displayName}
+                </h2>
+              </div>
+              <CheckBadgeIcon className="w-6 text-twitter" />
+            </div>
+
+            <h3 className=" font-light text-gray-400 text-sm">{user?.email}</h3>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

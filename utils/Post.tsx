@@ -1,7 +1,6 @@
 import Image from "next/image";
 import profile from "../assests/profile.jpg";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import {
   ArrowPathRoundedSquareIcon,
@@ -32,11 +31,12 @@ function Post({ tweet }: props) {
     <div className="p-2  md:p-4 flex space-x-2  border">
       <div className="">
         {tweet.userPhotoURL ? (
-          <LazyLoadImage
+          <img
             src={tweet.userPhotoURL}
             alt="profile picture"
             width={200}
             height={200}
+            loading="lazy"
             className=" w-[40px] h-[40px] md:h-[50px] md:w-[50px]  object-cover rounded-full"
           />
         ) : (
@@ -75,8 +75,9 @@ function Post({ tweet }: props) {
           className="space-y-3 mt-2 cursor-pointer"
         >
           <h3>{tweet.tweetText}</h3>
-          <LazyLoadImage
+          <img
             src={tweet.image}
+            loading="lazy"
             className=" max-h-[510px] object-contain rounded-lg"
           />
         </div>
