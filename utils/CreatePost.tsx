@@ -50,7 +50,6 @@ function CreatePost({}: Props) {
       toast.error("Error adding tweet");
     }
   }
-  console.log(user);
   return (
     <div className="flex  space-x-2 p-2 md:p-4 border-t ">
       <Toaster />

@@ -26,7 +26,6 @@ function Signup({}: Props) {
         router.push("/createprofile");
       })
       .catch((error) => {
-        console.error(error.code);
         if (error.code === "auth/email-already-in-use") {
           setEmailAlreadyinUse(true);
         }
