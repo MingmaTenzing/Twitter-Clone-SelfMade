@@ -37,7 +37,6 @@ function Feed({}: Props) {
 
   const tweetadded = useAppSelector((state) => state.tweet);
 
-  console.log(Tweets);
   useEffect(() => {
     async function getPosts() {
       const { docs } = await getDocs(collection(db, "posts"));
