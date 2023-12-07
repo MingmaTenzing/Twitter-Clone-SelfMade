@@ -25,7 +25,7 @@ function CreateProfile({}: Props) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        router.push("/login");
+        router.push("/signup");
       }
     });
   }, []);
