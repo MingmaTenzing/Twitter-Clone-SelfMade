@@ -109,7 +109,7 @@ function Tweet({}: Props) {
     }
   }
   return (
-    <main className="flex justify-center bg-black text-white relative">
+    <main className="flex justify-center  bg-black text-white relative">
       <Toaster />
       <Head>
         <title>{Tweet?.userName}</title>
@@ -148,7 +148,10 @@ function Tweet({}: Props) {
             />
           )}
 
-          <form onSubmit={sendReply} className="md:space-x-4">
+          <form
+            onSubmit={sendReply}
+            className=" flex px-2 md:px-0  md:space-x-4"
+          >
             <input
               type="text"
               onChange={(e) => setReply(e.target.value)}
