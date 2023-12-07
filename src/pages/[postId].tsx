@@ -104,9 +104,7 @@ function Tweet({}: Props) {
       setcommentAdded(!commentadded);
       toast.success("Comment added successfully");
       setReply("");
-    } catch (e) {
-      console.error("Error posting comment:", e);
-    }
+    } catch (e) {}
   }
   return (
     <main className="flex justify-center  bg-black text-white relative">
