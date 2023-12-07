@@ -10,3 +10,16 @@
         @apply dark:border-[#242424];
     }
 }
+
+#mainPage{
+     
+
+}
+
+
+.openModal{
+   filter: blur(2px) opacity(60%)!important;
+ 
+  
+
+}
