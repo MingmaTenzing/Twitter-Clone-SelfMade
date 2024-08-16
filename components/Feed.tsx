@@ -47,7 +47,7 @@ function Feed({}: Props) {
     getPosts();
   }, [tweetadded]);
   return (
-    <div className=" bg-black text-white md:w-[600px]  overflow-x-hidden border-r  ">
+    <div className=" bg-black text-white md:w-[600px] md:max-w-[600px]  overflow-x-hidden border-r  ">
       <FeedHeader />
       <section id="createpost">
         <CreatePost />

@@ -28,9 +28,10 @@ function Post({ tweet }: props) {
   const [chartBar, setChartBart] = useState<boolean>(false);
   const router = useRouter();
   return (
-    <div className="p-2  md:p-4 flex space-x-2  border">
+    <div className="p-2   md:p-4 flex space-x-2  border">
       <div className="">
         {tweet.userPhotoURL ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={tweet.userPhotoURL}
             alt="profile picture"
