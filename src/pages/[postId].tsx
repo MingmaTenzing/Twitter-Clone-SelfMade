@@ -117,7 +117,7 @@ function Tweet({}: Props) {
       </Head>
       <Nav />
 
-      <div className="md:border-r   md:w-[600px]  md:max-w-[600px]  overflow-x-hidden ">
+      <div className="md:border-r   md:w-[615px]  md:max-w-[610px]  overflow-x-hidden ">
         <div className="flex space-x-2 p-4">
           <ArrowLeftIcon
             onClick={() => router.push("/")}
